@@ -1,0 +1,19 @@
+{
+  "n_channels": 4200,
+  "n_strata": 21,
+  "half_seqs": 8,
+  "joint_loi": {
+    "split_half_pooled_spearman": 0.9716655730617022,
+    "split_half_within_linear_median": 0.23851496287407187,
+    "n_strata_used": 21,
+    "spearman_brown_full_eval_pooled": 0.9856291922294415,
+    "spearman_brown_full_eval_within": 0.385162828102745
+  },
+  "isolated": {
+    "split_half_pooled_spearman": 0.9633536699342056,
+    "split_half_within_linear_median": 0.8416155403885099,
+    "n_strata_used": 21,
+    "spearman_brown_full_eval_pooled": 0.9813348299763931,
+    "spearman_brown_full_eval_within": 0.9139970009277414
+  }
+}

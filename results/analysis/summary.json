@@ -1,0 +1,154 @@
+{
+  "gt_mode": "final",
+  "n_channels": 245760,
+  "n_measured": 36342,
+  "n_fp64_rechecked": 15525,
+  "rq1": {
+    "strata_passing": 1,
+    "strata_falsified": 3,
+    "n_strata": 21,
+    "median_top1pct_share": 0.2838342749454619
+  },
+  "rq2": {
+    "pairs_significant_holm": 30,
+    "pairs_tested": 45,
+    "min_ratio_over_null": 37.27970216133078,
+    "max_ratio_over_null": 153.73909319378424
+  },
+  "rq3": {
+    "2": {
+      "size": 3486,
+      "expected_chance": 243.68396466673877,
+      "net_size": 3242.3160353332614,
+      "measured": 3426,
+      "coverage": 0.9827882960413081,
+      "set_frac_of_N": 0.0141845703125,
+      "gt_frac": 0.9041163846279233,
+      "chance_frac": 0.5449339907746142,
+      "net_gt_frac": 0.3591823938533091,
+      "net_gt_frac_ci_low": 0.31017140066511195,
+      "net_gt_frac_ci_high": 0.3959664169447252
+    },
+    "3": {
+      "size": 1967,
+      "expected_chance": 2.4634698228507292,
+      "net_size": 1964.5365301771492,
+      "measured": 1964,
+      "coverage": 0.9984748347737672,
+      "set_frac_of_N": 0.008003743489583333,
+      "gt_frac": 0.8389581228494646,
+      "chance_frac": 0.31239064736758393,
+      "net_gt_frac": 0.5265674754818807,
+      "net_gt_frac_ci_low": 0.4561804497154585,
+      "net_gt_frac_ci_high": 0.5757635055923087
+    },
+    "4": {
+      "size": 1004,
+      "expected_chance": 0.012477323203845304,
+      "net_size": 1003.9875226767962,
+      "measured": 1004,
+      "coverage": 1.0,
+      "set_frac_of_N": 0.0040852864583333336,
+      "gt_frac": 0.6489510521546101,
+      "chance_frac": 0.15969460792110704,
+      "net_gt_frac": 0.4892564442335031,
+      "net_gt_frac_ci_low": 0.362114120544557,
+      "net_gt_frac_ci_high": 0.5857602124539468
+    },
+    "5": {
+      "size": 509,
+      "expected_chance": 2.5304487083485593e-05,
+      "net_size": 508.9999746955129,
+      "measured": 509,
+      "coverage": 1.0,
+      "set_frac_of_N": 0.002071126302083333,
+      "gt_frac": 0.523261901783947,
+      "chance_frac": 0.08096071258151742,
+      "net_gt_frac": 0.4423011892024296,
+      "net_gt_frac_ci_low": 0.28017392036145666,
+      "net_gt_frac_ci_high": 0.5689942955314685
+    }
+  },
+  "rq4": {
+    "awq": {
+      "share": 0.8976121596603372,
+      "ci_low": 0.864916708175253,
+      "ci_high": 0.9335338369396071,
+      "overprotects": true
+    },
+    "gptq": {
+      "share": 0.9426189087011658,
+      "ci_low": 0.916141743756992,
+      "ci_high": 0.9664880650270513,
+      "overprotects": true
+    },
+    "owq_residual": {
+      "share": 0.891676633071776,
+      "ci_low": 0.8557742085296046,
+      "ci_high": 0.9363089764522682,
+      "overprotects": true
+    },
+    "spqr": {
+      "share": 0.933231071525238,
+      "ci_low": 0.9038198013823749,
+      "ci_high": 0.9637538515413983,
+      "overprotects": true
+    },
+    "unified": {
+      "share": 0.9148465609401473,
+      "ci_low": 0.888014326693803,
+      "ci_high": 0.9464908378280454,
+      "overprotects": true
+    }
+  },
+  "rq5": {
+    "pooled_partial": {
+      "awq": {
+        "raw_spearman": 0.3687318117247656,
+        "partial_spearman": -0.011885922766914971
+      },
+      "gptq": {
+        "raw_spearman": 0.3695694141931629,
+        "partial_spearman": 0.02704073337503347
+      },
+      "owq_residual": {
+        "raw_spearman": 0.45674090729581684,
+        "partial_spearman": 0.19433665898419528
+      },
+      "spqr": {
+        "raw_spearman": 0.4288609435549561,
+        "partial_spearman": 0.055898566818151446
+      },
+      "unified": {
+        "raw_spearman": 0.8705182832005648,
+        "partial_spearman": 0.8467911071259192
+      },
+      "owq_energy": {
+        "raw_spearman": 0.4889225245232556,
+        "partial_spearman": 0.2561954566697151
+      },
+      "gptq_actorder_proxy": {
+        "raw_spearman": 0.40556316643929896,
+        "partial_spearman": 0.3085733441468868
+      }
+    },
+    "unified_wins_vs": [
+      "awq",
+      "gptq",
+      "owq_residual",
+      "spqr",
+      "owq_energy",
+      "gptq_actorder_proxy"
+    ],
+    "beats_unified": [],
+    "precision_at_k": {
+      "awq": 0.38095238095238093,
+      "gptq": 0.07936507936507936,
+      "owq_residual": 0.5238095238095238,
+      "spqr": 0.15873015873015872,
+      "unified": 0.4126984126984127,
+      "owq_energy": 0.30158730158730157,
+      "gptq_actorder_proxy": 0.4603174603174603
+    }
+  }
+}

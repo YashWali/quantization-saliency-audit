@@ -1,0 +1,16 @@
+{
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "dataset_id": "Salesforce/wikitext",
+  "dataset_config": "wikitext-2-raw-v1",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "seed": 42,
+  "git_sha": "986acf896b4e03ae16acd909439936c426459bfe",
+  "torch_version": "2.12.0",
+  "transformers_version": "5.10.1",
+  "mps_available": true,
+  "forward_dtype": "torch.float32",
+  "accum_dtype": "torch.float64",
+  "stage": "analysis_pythia",
+  "gt_mode": "final"
+}

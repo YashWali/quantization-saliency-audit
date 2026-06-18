@@ -1,0 +1,105 @@
+{
+  "rq4_oracle": {
+    "share": 0.9183096673771999,
+    "ci_low": 0.8778823064083859,
+    "ci_high": 0.9572371966320099,
+    "top_frac": 0.2,
+    "n": 464
+  },
+  "mass_weighted_recall": {
+    "awq": {
+      "mass_recall_top1pct": 0.5564604804368789,
+      "mass_recall_excl_top5": 0.21044687888105604,
+      "catches_all_top5": false
+    },
+    "gptq": {
+      "mass_recall_top1pct": 0.5111287026665301,
+      "mass_recall_excl_top5": 0.14776918358412514,
+      "catches_all_top5": false
+    },
+    "owq_residual": {
+      "mass_recall_top1pct": 0.5609629613082617,
+      "mass_recall_excl_top5": 0.21860551100560033,
+      "catches_all_top5": false
+    },
+    "spqr": {
+      "mass_recall_top1pct": 0.508495841574393,
+      "mass_recall_excl_top5": 0.1429983592987183,
+      "catches_all_top5": false
+    },
+    "unified": {
+      "mass_recall_top1pct": 0.555128092148135,
+      "mass_recall_excl_top5": 0.19387858774116448,
+      "catches_all_top5": true
+    },
+    "oracle": {
+      "mass_recall_top1pct": 0.5768408525230693,
+      "mass_recall_excl_top5": 0.2332227691753137,
+      "catches_all_top5": true
+    }
+  },
+  "membership_recall_census": {
+    "_truth_set": {
+      "pooled_top1pct_n": 307,
+      "census_n": 30720
+    },
+    "awq": {
+      "membership_recall_pooled_top1pct": 0.3713355048859935,
+      "membership_recall_within_stratum": 0.6375404530744336
+    },
+    "gptq": {
+      "membership_recall_pooled_top1pct": 0.08794788273615635,
+      "membership_recall_within_stratum": 0.3559870550161812
+    },
+    "owq_residual": {
+      "membership_recall_pooled_top1pct": 0.5342019543973942,
+      "membership_recall_within_stratum": 0.686084142394822
+    },
+    "spqr": {
+      "membership_recall_pooled_top1pct": 0.28013029315960913,
+      "membership_recall_within_stratum": 0.36245954692556637
+    },
+    "unified": {
+      "membership_recall_pooled_top1pct": 0.5211726384364821,
+      "membership_recall_within_stratum": 0.511326860841424
+    }
+  },
+  "pooled_concentration": {
+    "n_census": 30720,
+    "top5_channels_share": 0.44813287293127707,
+    "top_0.1pct_share": 0.4999260804961583,
+    "top_1pct_share": 0.5951626400365689,
+    "top5_list": [
+      {
+        "layer": 2,
+        "linear": "down_proj",
+        "in_channel": 813,
+        "gt_iso": 0.1044451272860909
+      },
+      {
+        "layer": 11,
+        "linear": "v_proj",
+        "in_channel": 62,
+        "gt_iso": 0.0019197307154157212
+      },
+      {
+        "layer": 2,
+        "linear": "v_proj",
+        "in_channel": 208,
+        "gt_iso": 0.0016631194915911751
+      },
+      {
+        "layer": 11,
+        "linear": "up_proj",
+        "in_channel": 570,
+        "gt_iso": 0.0011324102747500009
+      },
+      {
+        "layer": 2,
+        "linear": "up_proj",
+        "in_channel": 570,
+        "gt_iso": 0.0009769393772302015
+      }
+    ]
+  }
+}

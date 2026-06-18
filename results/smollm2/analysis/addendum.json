@@ -1,0 +1,105 @@
+{
+  "rq4_oracle": {
+    "share": 0.9045368891114711,
+    "ci_low": 0.8208933798780406,
+    "ci_high": 0.9641740354198717,
+    "top_frac": 0.2,
+    "n": 461
+  },
+  "mass_weighted_recall": {
+    "awq": {
+      "mass_recall_top1pct": 0.43436377212587846,
+      "mass_recall_excl_top5": 0.23330070931414718,
+      "catches_all_top5": true
+    },
+    "gptq": {
+      "mass_recall_top1pct": 0.3763266308768265,
+      "mass_recall_excl_top5": 0.17944891534440793,
+      "catches_all_top5": false
+    },
+    "owq_residual": {
+      "mass_recall_top1pct": 0.43683688530554066,
+      "mass_recall_excl_top5": 0.23665292408963845,
+      "catches_all_top5": true
+    },
+    "spqr": {
+      "mass_recall_top1pct": 0.3772116474454647,
+      "mass_recall_excl_top5": 0.18064852304628795,
+      "catches_all_top5": false
+    },
+    "unified": {
+      "mass_recall_top1pct": 0.4327169119746363,
+      "mass_recall_excl_top5": 0.23106845040357188,
+      "catches_all_top5": true
+    },
+    "oracle": {
+      "mass_recall_top1pct": 0.44863629832795243,
+      "mass_recall_excl_top5": 0.2526465983788422,
+      "catches_all_top5": true
+    }
+  },
+  "membership_recall_census": {
+    "_truth_set": {
+      "pooled_top1pct_n": 250,
+      "census_n": 24960
+    },
+    "awq": {
+      "membership_recall_pooled_top1pct": 0.38,
+      "membership_recall_within_stratum": 0.7131782945736435
+    },
+    "gptq": {
+      "membership_recall_pooled_top1pct": 0.1,
+      "membership_recall_within_stratum": 0.5232558139534884
+    },
+    "owq_residual": {
+      "membership_recall_pooled_top1pct": 0.28,
+      "membership_recall_within_stratum": 0.7364341085271318
+    },
+    "spqr": {
+      "membership_recall_pooled_top1pct": 0.104,
+      "membership_recall_within_stratum": 0.5155038759689923
+    },
+    "unified": {
+      "membership_recall_pooled_top1pct": 0.62,
+      "membership_recall_within_stratum": 0.6317829457364341
+    }
+  },
+  "pooled_concentration": {
+    "n_census": 24960,
+    "top5_channels_share": 0.2622450095550105,
+    "top_0.1pct_share": 0.3303958950800141,
+    "top_1pct_share": 0.45394594843820113,
+    "top5_list": [
+      {
+        "layer": 3,
+        "linear": "down_proj",
+        "in_channel": 962,
+        "gt_iso": 0.03205373356181951
+      },
+      {
+        "layer": 3,
+        "linear": "k_proj",
+        "in_channel": 40,
+        "gt_iso": 0.0017829798558620588
+      },
+      {
+        "layer": 29,
+        "linear": "down_proj",
+        "in_channel": 1322,
+        "gt_iso": 0.0015709188322323223
+      },
+      {
+        "layer": 3,
+        "linear": "v_proj",
+        "in_channel": 87,
+        "gt_iso": 0.0014334504640434176
+      },
+      {
+        "layer": 29,
+        "linear": "v_proj",
+        "in_channel": 87,
+        "gt_iso": 0.0012239238753046222
+      }
+    ]
+  }
+}
