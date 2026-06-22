@@ -25,11 +25,15 @@ def _save(fig, path):
     return path
 
 
-def fig_lorenz(df_sweep: pd.DataFrame, path):
-    """RQ1: Lorenz curves of GT sensitivity per sweep stratum."""
+def fig_lorenz(df_sweep: pd.DataFrame, path, model: str = ""):
+    """RQ1: Lorenz curves of GT sensitivity per sweep stratum.
+
+    `model` (e.g. "Qwen2.5-0.5B") is named in the title so per-model copies are
+    self-identifying. constrained_layout keeps the suptitle from being clipped.
+    """
     layers = sorted(df_sweep["layer"].unique())
-    fig, axes = plt.subplots(1, len(layers), figsize=(4 * len(layers), 3.4),
-                             sharey=True)
+    fig, axes = plt.subplots(1, len(layers), figsize=(4 * len(layers), 3.6),
+                             sharey=True, constrained_layout=True)
     for ax, layer in zip(np.atleast_1d(axes), layers):
         for linear, g in df_sweep[df_sweep.layer == layer].groupby(
                 "linear", observed=True):
@@ -38,11 +42,15 @@ def fig_lorenz(df_sweep: pd.DataFrame, path):
                     lw=1.2)
         ax.plot([0, 1], [0, 1], "k--", lw=0.8, alpha=0.5)
         ax.set_title(f"layer {layer}")
-        ax.set_xlabel("channel fraction (ascending GT)")
-    np.atleast_1d(axes)[0].set_ylabel("cumulative GT share")
+        ax.set_xlabel("channel fraction (ascending sensitivity)")
+    np.atleast_1d(axes)[0].set_ylabel("cumulative sensitivity share")
     np.atleast_1d(axes)[-1].legend(fontsize=7, loc="upper left")
-    fig.suptitle("RQ1 - Lorenz curves of isolated-GT sensitivity", y=1.02)
-    return _save(fig, path)
+    prefix = f"{model}: " if model else ""
+    fig.suptitle(f"{prefix}per-stratum Lorenz curves of measured sensitivity "
+                 "(RQ1; dashed line = perfect equality)")
+    fig.savefig(path, dpi=200)
+    plt.close(fig)
+    return path
 
 
 def fig_jaccard_heatmap(rq2: pd.DataFrame, top_frac: float, path):
@@ -130,4 +138,38 @@ def fig_floor_position(gt: pd.DataFrame, floor: float, path):
     ax.set_ylabel("density")
     ax.legend(fontsize=8)
     ax.set_title("Isolated-GT distributions vs measurement floor")
+    return _save(fig, path)
+
+
+def fig_partial_collapse(pooled_partial: dict, path):
+    """RQ5/§4.3: each criterion's Spearman correlation with measured GT, raw vs
+    after partialling out layer index, weight norm and mean activation. All
+    collapse toward zero except the unified gradient score (the lone survivor)."""
+    rows = [(m, v["raw_spearman"], v["partial_spearman"])
+            for m, v in pooled_partial.items()]
+    rows.sort(key=lambda r: r[1])  # ascending raw, so best ends on top
+    fig, ax = plt.subplots(figsize=(7, 4.2))
+    for i, (m, raw, part) in enumerate(rows):
+        survivor = (m == "unified")
+        color = "seagreen" if survivor else "0.55"
+        ax.plot([part, raw], [i, i], color=color,
+                lw=2.8 if survivor else 1.5, solid_capstyle="round", zorder=2)
+        ax.scatter([raw], [i], color=color, s=46, zorder=3)               # raw
+        ax.scatter([part], [i], facecolor="white", edgecolor=color,
+                   linewidth=1.8, s=46, zorder=3)                          # partial
+        ax.annotate(f"{raw:.2f}", (raw, i), xytext=(7, 0),
+                    textcoords="offset points", va="center", ha="left",
+                    fontsize=8, color="0.45")
+        ax.annotate(f"{part:.2f}", (part, i), xytext=(-7, 0),
+                    textcoords="offset points", va="center", ha="right",
+                    fontsize=8, fontweight="bold" if survivor else "normal",
+                    color=color if survivor else "0.3")
+    ax.axvline(0, color="k", lw=0.6, zorder=1)
+    ax.set_yticks(range(len(rows)),
+                  [METHOD_LABELS.get(m, m) for m, _, _ in rows], fontsize=9)
+    ax.set_xlim(-0.1, 1.0)
+    ax.set_xlabel("Spearman correlation with measured sensitivity")
+    ax.set_title("Correlation with measured sensitivity: filled = raw,\n"
+                 "open = after controlling the shared drivers "
+                 "(only unified survives)")
     return _save(fig, path)

@@ -43,7 +43,8 @@ def main():
                 m.loc[got, "kl_iso_fp64_kl_mean"].to_numpy()
 
     sweep = gt[gt["layer"].isin(cfg.SWEEP_LAYERS)]
-    log(plots.fig_lorenz(sweep, FIGURES / "rq1_lorenz.png").name)
+    log(plots.fig_lorenz(sweep, FIGURES / "rq1_lorenz.png",
+                         model="Qwen2.5-0.5B").name)
 
     rq2 = pd.read_parquet(ANALYSIS / "rq2_agreement.parquet")
     for frac in cfg.TOP_K_FRACTIONS:

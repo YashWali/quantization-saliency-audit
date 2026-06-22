@@ -40,7 +40,8 @@ def main():
     gt["gt_iso"] = gt["kl_iso_kl_mean"]  # exact-fp64 inline -> no recheck merge
 
     sweep = gt[gt["layer"].isin(cfg.SWEEP_LAYERS)]
-    log(plots.fig_lorenz(sweep, FIGURES / "rq1_lorenz.png").name)
+    _model = {"pythia": "Pythia-410m", "smollm2": "SmolLM2-360M"}.get(_RUN, _RUN)
+    log(plots.fig_lorenz(sweep, FIGURES / "rq1_lorenz.png", model=_model).name)
 
     rq2 = pd.read_parquet(ANALYSIS / "rq2_agreement.parquet")
     for frac in cfg.TOP_K_FRACTIONS:
