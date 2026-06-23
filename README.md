@@ -43,6 +43,7 @@ python scripts/03c_threshold_validation.py
 python scripts/03d_split_half_reliability.py
 python scripts/04_analysis.py
 python scripts/04b_addendum.py
+python scripts/04d_review_robustness.py
 python scripts/05_plots.py
 python scripts/06_guard_recheck.py
 

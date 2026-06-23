@@ -1,0 +1,80 @@
+{
+  "run": "config_pythia",
+  "note": "Post-hoc robustness checks (not pre-registered), raised in adversarial review. (A) RQ3 net GT-mass vs a size-matched oracle ceiling. (B) RQ5 metric-vs-GT partials with `layer` dummy-coded (k-1 indicators, lowest swept layer reference) vs the published single linear rank term. (C) census recall@1% for every metric, persisting the secondary GPTQ act-order column cited in the paper. No measured number or pre-registered verdict is changed.",
+  "rq3_oracle_ceiling": {
+    "2": {
+      "size": 2175,
+      "measured": 2173,
+      "net_gt_frac": 0.3862337734066025,
+      "oracle_net_gt_frac": 0.5195006215531484,
+      "frac_of_ceiling": 0.7434712440802888
+    },
+    "3": {
+      "size": 1326,
+      "measured": 1326,
+      "net_gt_frac": 0.48265790557414684,
+      "oracle_net_gt_frac": 0.6861485220918577,
+      "frac_of_ceiling": 0.7034306568243709
+    },
+    "4": {
+      "size": 876,
+      "measured": 876,
+      "net_gt_frac": 0.4144380764116312,
+      "oracle_net_gt_frac": 0.7649220094182051,
+      "frac_of_ceiling": 0.541804355619013
+    },
+    "5": {
+      "size": 431,
+      "measured": 431,
+      "net_gt_frac": 0.3713349597246907,
+      "oracle_net_gt_frac": 0.8095921376142758,
+      "frac_of_ceiling": 0.45866917732050716
+    }
+  },
+  "layer_coding": {
+    "n_channels": 21504,
+    "reference_layer": 2,
+    "dummy_layers": [
+      11,
+      22
+    ],
+    "metrics": {
+      "awq": {
+        "raw_spearman": 0.6998844137921445,
+        "partial_linear_layer": 0.01666065963587412,
+        "partial_dummy_layer": 0.030273765044457848
+      },
+      "gptq": {
+        "raw_spearman": 0.683319939965358,
+        "partial_linear_layer": 0.1764100298660831,
+        "partial_dummy_layer": 0.13088883195389253
+      },
+      "owq_residual": {
+        "raw_spearman": 0.7234013149821135,
+        "partial_linear_layer": 0.2560653371209111,
+        "partial_dummy_layer": 0.22593706120656215
+      },
+      "spqr": {
+        "raw_spearman": 0.7085057940217537,
+        "partial_linear_layer": 0.22740096924094513,
+        "partial_dummy_layer": 0.1861508747727641
+      },
+      "unified": {
+        "raw_spearman": 0.726313800510938,
+        "partial_linear_layer": 0.5312588497328404,
+        "partial_dummy_layer": 0.5022365512844715
+      }
+    }
+  },
+  "census_recall_at_1pct": {
+    "census_n": 21504,
+    "top1pct_n": 215,
+    "awq": 0.8093023255813954,
+    "gptq": 0.7627906976744186,
+    "owq_residual": 0.7767441860465116,
+    "spqr": 0.7441860465116279,
+    "unified": 0.13953488372093023,
+    "owq_energy": 0.7581395348837209,
+    "gptq_actorder_proxy": 0.813953488372093
+  }
+}

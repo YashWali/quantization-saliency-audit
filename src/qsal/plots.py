@@ -32,19 +32,20 @@ def fig_lorenz(df_sweep: pd.DataFrame, path, model: str = ""):
     self-identifying. constrained_layout keeps the suptitle from being clipped.
     """
     layers = sorted(df_sweep["layer"].unique())
-    fig, axes = plt.subplots(1, len(layers), figsize=(4 * len(layers), 3.6),
+    fig, axes = plt.subplots(1, len(layers), figsize=(3.4 * len(layers), 3.4),
                              sharey=True, constrained_layout=True)
     for ax, layer in zip(np.atleast_1d(axes), layers):
         for linear, g in df_sweep[df_sweep.layer == layer].groupby(
                 "linear", observed=True):
             curve = lorenz(g["gt_iso"].to_numpy())
             ax.plot(np.linspace(0, 1, len(curve)), curve, label=linear,
-                    lw=1.2)
+                    lw=1.8)
         ax.plot([0, 1], [0, 1], "k--", lw=0.8, alpha=0.5)
-        ax.set_title(f"layer {layer}")
-        ax.set_xlabel("channel fraction (ascending sensitivity)")
-    np.atleast_1d(axes)[0].set_ylabel("cumulative sensitivity share")
-    np.atleast_1d(axes)[-1].legend(fontsize=7, loc="upper left")
+        ax.set_title(f"layer {layer}", fontsize=11)
+        ax.set_xlabel("channel fraction (ascending sensitivity)", fontsize=10)
+        ax.tick_params(labelsize=9)
+    np.atleast_1d(axes)[0].set_ylabel("cumulative sensitivity share", fontsize=10)
+    np.atleast_1d(axes)[-1].legend(fontsize=10, loc="upper left")
     prefix = f"{model}: " if model else ""
     fig.suptitle(f"{prefix}per-stratum Lorenz curves of measured sensitivity "
                  "(RQ1; dashed line = perfect equality)")
@@ -70,12 +71,12 @@ def fig_jaccard_heatmap(rq2: pd.DataFrame, top_frac: float, path):
         for j in range(n):
             if i != j and not np.isnan(M[i, j]):
                 ax.text(j, i, f"{M[i, j]:.1f}x\nJ={A[i, j]:.2f}",
-                        ha="center", va="center", fontsize=7,
+                        ha="center", va="center", fontsize=9,
                         color="white" if M[i, j] < np.nanmax(M) * 0.6
                         else "black")
     labels = [METHOD_LABELS.get(m, m) for m in methods]
-    ax.set_xticks(range(n), labels, rotation=30, ha="right", fontsize=8)
-    ax.set_yticks(range(n), labels, fontsize=8)
+    ax.set_xticks(range(n), labels, rotation=30, ha="right", fontsize=11)
+    ax.set_yticks(range(n), labels, fontsize=11)
     fig.colorbar(im, label="Jaccard ratio over stratified null")
     ax.set_title(f"RQ2 - top-{top_frac:.0%} agreement over chance")
     return _save(fig, path)

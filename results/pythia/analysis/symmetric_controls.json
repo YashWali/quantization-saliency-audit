@@ -1,0 +1,44 @@
+{
+  "run": "config_pythia",
+  "n_channels": 21504,
+  "baseline_controls": "layer,log_w_norm,mean_abs_x",
+  "symmetric_controls": "layer,log_w_norm,mean_abs_x,mean_abs_g",
+  "note": "Post-hoc robustness check (not pre-registered). mean_abs_g = E[|dL/dx_c|] over calibration, the gradient-scale analog of the activation control mean_abs_x = E[|x_c|]. Re-run of the calibration gradient pass only; ground truth and scores unchanged.",
+  "metrics": {
+    "awq": {
+      "raw_spearman": 0.6998844137921445,
+      "partial_baseline": 0.01666065963587412,
+      "partial_symmetric": -0.00424984230456993
+    },
+    "gptq": {
+      "raw_spearman": 0.683319939965358,
+      "partial_baseline": 0.1764100298660831,
+      "partial_symmetric": 0.3196899003134234
+    },
+    "owq_residual": {
+      "raw_spearman": 0.7234013149821135,
+      "partial_baseline": 0.2560653371209111,
+      "partial_symmetric": 0.3186398697596119
+    },
+    "spqr": {
+      "raw_spearman": 0.7085057940217537,
+      "partial_baseline": 0.22740096924094513,
+      "partial_symmetric": 0.334477820960802
+    },
+    "unified": {
+      "raw_spearman": 0.726313800510938,
+      "partial_baseline": 0.5312588497328404,
+      "partial_symmetric": 0.4855268212634317
+    },
+    "owq_energy": {
+      "raw_spearman": 0.7170835130163014,
+      "partial_baseline": 0.2155605570347706,
+      "partial_symmetric": 0.20295364876170413
+    },
+    "gptq_actorder_proxy": {
+      "raw_spearman": 0.7052594266303611,
+      "partial_baseline": 0.1519507220420623,
+      "partial_symmetric": 0.22565987833918497
+    }
+  }
+}
