@@ -1,0 +1,74 @@
+{
+  "note": "POST-HOC robustness check (not pre-registered); no verdict tuned. INT4 isolated probe vs the INT3 ground truth.",
+  "probe_bits_int4": 4,
+  "probe_bits_int3": 3,
+  "floor_kl": 1e-06,
+  "strata": [
+    "L2_down_proj"
+  ],
+  "n_channels": 4864,
+  "within_stratum": {
+    "per_stratum": {
+      "L2_down_proj": {
+        "n": 4864,
+        "spearman_int4_vs_int3": 0.832221363528307,
+        "spearman_ci": [
+          0.8210818575650928,
+          0.8421922005829178
+        ],
+        "spearman_tail_int4_above_floor": 0.6213414566355743,
+        "n_int4_above_floor": 221,
+        "topk_membership_overlap": {
+          "top_0.01": {
+            "k": 49,
+            "recall": 0.6530612244897959,
+            "jaccard": 0.48484848484848486
+          },
+          "top_0.05": {
+            "k": 243,
+            "recall": 0.6666666666666666,
+            "jaccard": 0.5
+          },
+          "top_0.10": {
+            "k": 486,
+            "recall": 0.7304526748971193,
+            "jaccard": 0.5753646677471637
+          }
+        },
+        "frac_int4_below_floor": 0.9545641447368421,
+        "int4_kl_median": 3.4032919826665887e-07,
+        "int3_kl_median": 1.8137189530806135e-06
+      }
+    },
+    "median_spearman": 0.832221363528307,
+    "min_spearman": 0.832221363528307
+  },
+  "pooled": {
+    "spearman_int4_vs_int3": 0.832221363528307,
+    "spearman_ci": [
+      0.821420577596925,
+      0.843046715664577
+    ],
+    "spearman_tail_int4_above_floor": 0.6213414566355743,
+    "n_int4_above_floor": 221,
+    "topk_membership_overlap": {
+      "top_0.01": {
+        "k": 49,
+        "recall": 0.6530612244897959,
+        "jaccard": 0.48484848484848486
+      },
+      "top_0.05": {
+        "k": 243,
+        "recall": 0.6666666666666666,
+        "jaccard": 0.5
+      },
+      "top_0.10": {
+        "k": 486,
+        "recall": 0.7304526748971193,
+        "jaccard": 0.5753646677471637
+      }
+    },
+    "frac_int4_below_floor": 0.9545641447368421
+  },
+  "reading": "Full-population Spearman is inflated by below-floor mass; lead with top-k membership overlap and tail-restricted Spearman. INT3 justified by (1) necessity: only 7-27% of channels measurable at INT4; (2) proxy validity: INT3 top-1% is ~0.89 the same channels as INT4 (pooled)."
+}

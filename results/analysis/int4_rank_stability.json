@@ -1,0 +1,136 @@
+{
+  "note": "POST-HOC robustness check (not pre-registered); no verdict tuned. INT4 isolated probe vs the INT3 ground truth.",
+  "probe_bits_int4": 4,
+  "probe_bits_int3": 3,
+  "floor_kl": 1e-06,
+  "strata": [
+    "L2_v_proj",
+    "L11_v_proj",
+    "L22_v_proj"
+  ],
+  "n_channels": 2688,
+  "within_stratum": {
+    "per_stratum": {
+      "L2_v_proj": {
+        "n": 896,
+        "spearman_int4_vs_int3": 0.9364993580623894,
+        "spearman_ci": [
+          0.9236899390209068,
+          0.9471267863071768
+        ],
+        "spearman_tail_int4_above_floor": 0.8861387041973191,
+        "n_int4_above_floor": 238,
+        "topk_membership_overlap": {
+          "top_0.01": {
+            "k": 9,
+            "recall": 0.8888888888888888,
+            "jaccard": 0.8
+          },
+          "top_0.05": {
+            "k": 45,
+            "recall": 0.8888888888888888,
+            "jaccard": 0.8
+          },
+          "top_0.10": {
+            "k": 90,
+            "recall": 0.8444444444444444,
+            "jaccard": 0.7307692307692307
+          }
+        },
+        "frac_int4_below_floor": 0.734375,
+        "int4_kl_median": 5.06607517828251e-07,
+        "int3_kl_median": 2.641616226568746e-06
+      },
+      "L11_v_proj": {
+        "n": 896,
+        "spearman_int4_vs_int3": 0.9569505427776012,
+        "spearman_ci": [
+          0.944635127809064,
+          0.9663604124997736
+        ],
+        "spearman_tail_int4_above_floor": 0.8576271186440679,
+        "n_int4_above_floor": 59,
+        "topk_membership_overlap": {
+          "top_0.01": {
+            "k": 9,
+            "recall": 0.8888888888888888,
+            "jaccard": 0.8
+          },
+          "top_0.05": {
+            "k": 45,
+            "recall": 0.7777777777777778,
+            "jaccard": 0.6363636363636364
+          },
+          "top_0.10": {
+            "k": 90,
+            "recall": 0.9,
+            "jaccard": 0.8181818181818182
+          }
+        },
+        "frac_int4_below_floor": 0.9341517857142857,
+        "int4_kl_median": 9.271432460811415e-08,
+        "int3_kl_median": 5.157393510189906e-07
+      },
+      "L22_v_proj": {
+        "n": 896,
+        "spearman_int4_vs_int3": 0.961273845780161,
+        "spearman_ci": [
+          0.9539371781464588,
+          0.9666936932061144
+        ],
+        "spearman_tail_int4_above_floor": 0.5614685481942119,
+        "n_int4_above_floor": 112,
+        "topk_membership_overlap": {
+          "top_0.01": {
+            "k": 9,
+            "recall": 0.6666666666666666,
+            "jaccard": 0.5
+          },
+          "top_0.05": {
+            "k": 45,
+            "recall": 0.7111111111111111,
+            "jaccard": 0.5517241379310345
+          },
+          "top_0.10": {
+            "k": 90,
+            "recall": 0.8,
+            "jaccard": 0.6666666666666666
+          }
+        },
+        "frac_int4_below_floor": 0.875,
+        "int4_kl_median": 8.164805953993057e-08,
+        "int3_kl_median": 4.6105949896138574e-07
+      }
+    },
+    "median_spearman": 0.9569505427776012,
+    "min_spearman": 0.9364993580623894
+  },
+  "pooled": {
+    "spearman_int4_vs_int3": 0.9770499285095731,
+    "spearman_ci": [
+      0.9736365516070283,
+      0.9797383250316478
+    ],
+    "spearman_tail_int4_above_floor": 0.7946050660707958,
+    "n_int4_above_floor": 409,
+    "topk_membership_overlap": {
+      "top_0.01": {
+        "k": 27,
+        "recall": 0.8888888888888888,
+        "jaccard": 0.8
+      },
+      "top_0.05": {
+        "k": 134,
+        "recall": 0.8134328358208955,
+        "jaccard": 0.6855345911949685
+      },
+      "top_0.10": {
+        "k": 269,
+        "recall": 0.8475836431226765,
+        "jaccard": 0.7354838709677419
+      }
+    },
+    "frac_int4_below_floor": 0.8478422619047619
+  },
+  "reading": "Full-population Spearman is inflated by below-floor mass; lead with top-k membership overlap and tail-restricted Spearman. INT3 justified by (1) necessity: only 7-27% of channels measurable at INT4; (2) proxy validity: INT3 top-1% is ~0.89 the same channels as INT4 (pooled)."
+}
